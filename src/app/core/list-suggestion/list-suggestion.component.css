@@ -1,10 +1,10 @@
 .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
 }
 
 .form-control::placeholder {
@@ -30,17 +30,4 @@
 .badge.bg-warning-subtle {
   background-color: #fff3cd !important;
   color: #856404 !important;
-}
-.card {
-  transition: all 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
-}
-.form-control::placeholder { color: #aaa; font-style: italic; } 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
-  transition: all 0.3s ease;
 }
