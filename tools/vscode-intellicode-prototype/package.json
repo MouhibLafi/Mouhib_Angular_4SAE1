@@ -1,0 +1,19 @@
+{
+  "name": "vscode-intellicode-prototype",
+  "displayName": "IntelliCode API Examples Prototype",
+  "version": "0.0.1",
+  "description": "Prototype VS Code extension that shows a hover link and opens mocked examples in an untitled editor.",
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "prepublish": "npm run compile"
+  },
+  "engines": {
+    "vscode": "^1.29.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "@types/vscode": "^1.78.0"
+  }
+}

@@ -1,0 +1,47 @@
+<div class="container py-5">
+  <div *ngIf="suggestion">
+    <button class="btn btn-outline-secondary mb-4" (click)="backToList()">
+      ← Retour à la liste
+    </button>
+
+    <div class="card border-0 shadow-sm" style="border-radius: 25px;">
+      <div class="card-body p-5">
+        <h2 class="fw-bold text-primary mb-3">{{ suggestion.title }}</h2>
+        
+        <p class="text-muted mb-4">
+          <strong>Catégorie :</strong> {{ suggestion.category }} | 
+          <strong>Date :</strong> {{ suggestion.date | date:'dd MMM yyyy' : '' : 'fr' }}
+        </p>
+
+        <p class="text-secondary mb-4 fs-5">{{ suggestion.description }}</p>
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <span class="badge rounded-pill px-4 py-2 fw-bold fs-6"
+                [ngClass]="{
+                  'bg-success text-white': suggestion.status === 'acceptee',
+                  'bg-danger-subtle text-danger': suggestion.status === 'refusee',
+                  'bg-warning-subtle text-dark': suggestion.status === 'en_attente'
+                }">
+            {{ suggestion.status === 'acceptee' ? 'ACCEPTÉE' : suggestion.status === 'refusee' ? 'REFUSÉE' : 'EN ATTENTE' }}
+          </span>
+        </div>
+
+        <!-- Boutons Like & Favoris → CACHÉS si status = refusee -->
+        <div class="d-flex gap-3" *ngIf="suggestion.status !== 'refusee'">
+          <button class="btn btn-warning shadow-sm" (click)="likeSuggestion()">
+            👍 Like {{ suggestion.likes || 0 }}
+          </button>
+          <button class="btn btn-outline-secondary shadow-sm" 
+                  (click)="addToFavorites()"
+                  [disabled]="suggestion.isFavorite">
+            ⭐ {{ suggestion.isFavorite ? 'Ajoutée aux favoris' : 'Ajouter aux favoris' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!suggestion" class="alert alert-danger">
+    Suggestion non trouvée.
+  </div>
+</div>
